@@ -19,7 +19,7 @@ pipeline {
         }
         stage('drop containers') {
             steps {
-                sh 'docker-compose drop'
+                sh 'docker-compose down'
             }
         }
     }

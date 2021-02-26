@@ -17,5 +17,10 @@ pipeline {
                 sh 'docker-compose stop'
             }
         }
+        stage('drop containers') {
+            steps {
+                sh 'docker-compose drop'
+            }
+        }
     }
 }

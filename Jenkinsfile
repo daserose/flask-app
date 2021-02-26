@@ -1,28 +1,17 @@
 pipeline {
-    agent { docker { image 'test:flask-2' } }
-
+    agent any
     stages {
-        stage('1-Build') {
+        stage('docker-compose up') {
             steps {
-                echo "Start of Stage Build"
-                echo "Building......."
-                sh   "python --version"
-                echo "End of Stage Build"
+                sh 'cat docker-compose.yml'
+                sh 'docker-compose up -d'
+
             }
         }
-        stage('2-Test') {
+        stage('stop running containers') {
             steps {
-                echo "Start of Stage Test"
-                echo "Testing......."
-                echo "End of Stage Build"
+                sh 'docker-compose stop'
             }
         }
-        stage('3-Deploy') {
-            steps {
-                echo "Start of Stage Deploy"
-                echo "Deploying......."
-                echo "End of Stage Build"
-            }
-        }
-   }
+    }
 }

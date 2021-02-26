@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'flask-app:v1' } }
+    agent { docker { image 'test:flask-2' } }
 
     stages {
         stage('1-Build') {

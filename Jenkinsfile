@@ -12,15 +12,5 @@ pipeline {
                 sh 'docker-compose up -d'
             }
         }
-        stage('stop running containers') {
-            steps {
-                sh 'docker-compose stop'
-            }
-        }
-        stage('drop containers') {
-            steps {
-                sh 'docker-compose down'
-            }
-        }
     }
 }

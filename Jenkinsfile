@@ -12,14 +12,5 @@ pipeline {
                 sh 'docker-compose up -d'
             }
         }
-        #stage('deployment') {
-            #steps {
-                #kubernetesDeploy (
-                    #kubeconfigId: 'kubeconfig',
-                    #configs: 'kube.yml',
-                    #enableConfigSubstitution: true
-                #)
-            #}
-        #}
     }
 }

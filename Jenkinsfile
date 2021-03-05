@@ -12,14 +12,13 @@ pipeline {
                 sh 'docker-compose up -d'
             }
         }
-        stage('stop running containers') {
+        stage('deployment') {
             steps {
-                sh 'docker-compose stop'
-            }
-        }
-        stage('drop containers') {
-            steps {
-                sh 'docker-compose down'
+                kubernetesDeploy (
+                    kubeconfigId: 'kubeconfig',
+                    configs: 'kube.yml',
+                    enableConfigSubstitution: true
+                )
             }
         }
     }
